@@ -35,7 +35,7 @@ let complexArray = [
 //We have defined a variable called yourArray. Complete the statement by assigning an array of at least 5 elements in length to the yourArray variable. Your array should contain at least one string, one number, and one boolean.
 
 //setup
-let yourArray; // Change this line
+let yourArray = ['a', 2, true, null, {name: "Ryan"}]; // Change this line
 
 
 
@@ -61,7 +61,7 @@ ourArray[1] = "not b anymore";
 //setup
 let myArray = ["a", "b", "c", "d"];
 // Only change code below this line
-
+myArray[1] = "anything you want";
 // Only change code above this line
 console.log(myArray);
 
@@ -90,7 +90,8 @@ romanNumerals.push(twentyThree);
 //setup
 function mixedNumbers(arr) {
     // Only change code below this line
-  
+    arr.unshift("I", 2, "three");
+    arr.push(7, "VIII", 9);
     // Only change code above this line
     return arr;
   }
@@ -122,8 +123,8 @@ let popped = greetings.pop();
 
 //setup
 function popShift(arr) {
-    let popped; // Change this line
-    let shifted; // Change this line
+    let popped = arr.pop(); // Change this line
+    let shifted = arr.shift(); // Change this line
     return [shifted, popped];
   }
   
@@ -156,7 +157,7 @@ let newArray = array.splice(3, 2);
   //setup
   const arr = [2, 4, 5, 1, 7, 5, 2, 1];
 // Only change code below this line
-
+arr.splice(1,4);
 // Only change code above this line
 console.log(arr);
 
@@ -184,7 +185,7 @@ console.log(numbers);
 //setup
 function htmlColorNames(arr) {
     // Only change code below this line
-  
+    arr.splice(0, 2, "DarkSalmon", "BlanchedAlmond");
     // Only change code above this line
     return arr;
   }
@@ -215,8 +216,8 @@ function htmlColorNames(arr) {
     //setup
     function forecast(arr) {
         // Only change code below this line
-      
-        return arr;
+        
+        return arr.slice(2, 4);
       }
       
       // Only change code above this line
@@ -243,7 +244,7 @@ function htmlColorNames(arr) {
       //setup
       function spreadOut() {
         let fragment = ['to', 'code'];
-        let sentence; // Change this line
+        let sentence = ["learning", ...fragment, "is", "fun"]; // Change this line
         return sentence;
       }
       
@@ -269,6 +270,10 @@ fruits.indexOf('pears'); // returns 1, the first index at which the element exis
       //setup
       function quickCheck(arr, elem) {
         // Only change code below this line
+        if (arr.indexOf(elem) >= 0) {
+          return true;
+        }
+        return false;
       
         // Only change code above this line
       }
@@ -305,7 +310,11 @@ function greaterThanTen(arr) {
         function filteredArray(arr, elem) {
             let newArr = [];
             // Only change code below this line
-          
+            for (let i = 0; i < arr.length; i++){
+              if(arr[i].indexOf(elem) == -1){ //checks every parameter for the element and if it is not there continues the code
+                   newArr.push(arr[i]);//inserts the element of the array in the new filtered array
+              }
+            }
             // Only change code above this line
             return newArr;
           }
@@ -350,9 +359,9 @@ console.log(nestedArray[2][1][0][0][0]);
             // Only change code below this line
             ['unshift', false, 1, 2, 3, 'complex', 'nested'],
             ['loop', 'shift', 6, 7, 1000, 'method'],
-            ['concat', false, true, 'spread', 'array'],
-            ['mutate', 1327.98, 'splice', 'slice', 'push'],
-            ['iterate', 1.3849, 7, '8.4876', 'arbitrary', 'depth']
+            ['concat', false, true, 'spread', 'array',['deep']],
+            ['mutate', 1327.98, 'splice', 'slice', 'push',[["deeper"]]],
+            ['iterate', 1.3849, 7, '8.4876', 'arbitrary', 'depth',[[["deepest"]]]]
             // Only change code above this line
           ];
 
@@ -402,7 +411,9 @@ tekkenCharacter[eyes] = 'brown';
           };
           
           // Only change code below this line
-          
+          foods.bananas = 13;
+          foods.grapes = 35;
+          foods.strawberries = 27;
           // Only change code above this line
           console.log(foods);
 
@@ -443,7 +454,7 @@ tekkenCharacter[eyes] = 'brown';
       };
       
       // Only change code below this line
-      
+      userActivity.data.online = 45;
       // Only change code above this line
       
       console.log(userActivity);
@@ -475,7 +486,7 @@ tekkenCharacter[eyes] = 'brown';
       
       function checkInventory(scannedItem) {
         // Only change code below this line
-      
+        return foods[scannedItem];
         // Only change code above this line
       }
       
@@ -508,7 +519,9 @@ tekkenCharacter[eyes] = 'brown';
       };
       
       // Only change code below this line
-      
+      delete foods.oranges;
+      delete foods.plums;
+      delete foods.strawberries;
       // Only change code above this line
       
       console.log(foods);
@@ -547,9 +560,17 @@ let users = {
     }
   };
   
-  function isEveryoneHere(obj) {
+  function isEveryoneHere(userObj) {
     // Only change code below this line
-  
+    if (
+      userObj.hasOwnProperty("Alan") &&
+      userObj.hasOwnProperty("Jeff") &&
+      userObj.hasOwnProperty("Sarah") &&
+      userObj.hasOwnProperty("Ryan")
+    ) {
+      return true;
+    }
+    return false;
     // Only change code above this line
   }
   
@@ -574,22 +595,28 @@ let users = {
 
 
 //We've defined a function countOnline which accepts one argument (a users object). Use a for...in statement within this function to loop through the users object passed into the function and return the number of users whose online property is set to true. An example of a users object which could be passed to countOnline is shown below. Each user will have an online property with either a true or false value.
-// {
-//     Alan: {
-//       online: false
-//     },
-//     Jeff: {
-//       online: true
-//     },
-//     Sarah: {
-//       online: false
-//     }
-//   }
+let users = {
+    Alan: {
+      online: false
+    },
+    Jeff: {
+      online: true
+    },
+    Sarah: {
+      online: false
+    }
+  }
 
   //setup
   function countOnline(usersObj) {
     // Only change code below this line
-  
+    let result = 0;
+    for (let user in usersObj){
+      if (usersObj[user].online === true){
+        result++;
+      }
+    }
+    return result;
     // Only change code above this line
   }
   
@@ -626,7 +653,7 @@ let users = {
   
   function getArrayOfUsers(obj) {
     // Only change code below this line
-  
+    return Object.keys(obj);
     // Only change code above this line
   }
   
@@ -668,7 +695,8 @@ let users = {
   
   function addFriend(userObj, friend) {
     // Only change code below this line
-  
+    userObj.data.friends.push(friend);
+    return userObj.data.friends;
     // Only change code above this line
   }
   
